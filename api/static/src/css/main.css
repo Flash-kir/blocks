@@ -1,0 +1,44 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 3px #000;
+    color: yellow;
+    background-color: blue;
+}
+
+.button:hover {
+    color: green;
+    background-color: #ff9a25;
+}
+
+.blocks {
+    height: 100%;
+    width: 100%;
+}
+
+.blk__btn-rm {
+    background-color: #fff;
+    border: 1px solid #000;
+    line-height: 4px;
+    font-size:10px;
+    padding: 2px;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+}
+
+.blk__btn-rm:hover {
+    cursor: pointer;
+}
+
+.blk {
+    cursor: move;
+}
