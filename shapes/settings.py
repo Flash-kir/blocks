@@ -25,7 +25,7 @@ SECRET_KEY = 'higco#vjk@$!ht-21uu2e@)sm%a4#0xhw&#r(3b9$9j_rt$nub'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.flash-kir.ru']
 
 
 # Application definition
