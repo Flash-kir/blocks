@@ -8,7 +8,7 @@ function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function ajaxGet(el, method='GET', pk="", url="http://127.0.0.1:8000/api/shape/") {
+function ajaxGet(el, method='GET', pk="", url="http://193.106.92.212:8000/api/shape/") {
   return new Promise( function (resolve, reject) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url+pk, true);
@@ -55,7 +55,7 @@ function addBlk(send=1, obj, type='DIV') {
   let blkBtn = document.createElement('div');
   blkBtn.className = "blk__btn-rm";
   blkBtn.innerText = "x";
-  if (obj.type) {
+  if (obj) {
     type = obj.type
   }
   let blk = document.createElement(type), w = 0, h = 0, t = 0, l = 0, c = 0;
