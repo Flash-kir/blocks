@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'higco#vjk@$!ht-21uu2e@)sm%a4#0xhw&#r(3b9$9j_rt$nub'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -122,3 +122,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+try:
+    from shapes.local import *
+except ImportError:
+    import sys
+    sys.stderr.write('Unable to read local.py.Make file \n')
+    # Convenient defaults
+    DEBUG = False

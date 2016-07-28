@@ -8,7 +8,7 @@ function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function ajaxGet(el, method='GET', pk="", url="http://193.106.92.212:8000/api/shape/") {
+function ajaxGet(el, method='GET', pk="", url="http://www.flash-kir.ru/api/shape/") {
   return new Promise( function (resolve, reject) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url+pk, true);
