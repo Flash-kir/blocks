@@ -134,7 +134,7 @@ function upd() {
       let el = document.getElementById(resp[i].id);
       if (el) {
         el.style[resp[i].name] = resp[i].value;
-        console.log("changed style");
+        console.log("changed style "+ el.style[resp[i].name]+ " >>> "+ resp[i].value);
       }
     }
   });
