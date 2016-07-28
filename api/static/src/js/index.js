@@ -133,8 +133,10 @@ function upd() {
     for (let i = 0; i < resp.length; i++) {
       let el = document.getElementById(resp[i].id);
       if (el) {
-        el.style[resp[i].name] = resp[i].value;
-        console.log("changed style "+ el.style[resp[i].name]+ " >>> "+ resp[i].value);
+        if (el.style[resp[i].name] != resp[i].value) {
+          el.style[resp[i].name] = resp[i].value;
+          console.log("changed style "+ el.style[resp[i].name]+ " >>> "+ resp[i].value);
+        }
       }
     }
   });
