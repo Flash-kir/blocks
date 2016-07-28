@@ -1,11 +1,11 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 # from django.contrib.sites.models import Site
-import json
+import json, datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.http import QueryDict
-from objects.models import Shape
+from objects.models import Shape, Style
 
 
 class HomePageView(TemplateView):
@@ -19,6 +19,14 @@ class HomePageView(TemplateView):
 # POST /api/shapes - NEW
 # PUT /api/shapes/%d => UPDATE
 # DELETE /api/shapes/%d - DELETE
+
+
+
+@csrf_exempt
+def api_style_get(request):
+    if request.method == 'GET':
+        return JsonResponse([x.to_json() for x in Style.objects.all()], safe=False)
+
 
 @csrf_exempt
 def api_shape_get_post(request):

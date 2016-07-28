@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from django.utils import timezone
 
 # Create your models here.
 class Shape(models.Model):
@@ -44,3 +46,6 @@ class Style(models.Model):
     obj = models.ForeignKey(Shape)
     name = models.CharField(max_length=64, null=True, blank=True)
     value = models.CharField(max_length=256, null=True, blank=True)
+
+    def to_json(self):
+        return {"id": self.id, "name": self.name, "value": self.value}

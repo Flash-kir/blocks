@@ -121,10 +121,23 @@ function mUp(e) {
 }
 
 function mMove(e) {
-  if (activeElement) {
+  if (activeElement && activeElement.className == 'blk') {
     activeElement.style.left = (e.clientX - cX) + 'px';
     activeElement.style.top = (e.clientY - cY) + 'px';
+    ajaxGet(e.target, 'PUT', e.target.id+"/").then((resp)=> {blk.id = resp.id; console.log("block "+ resp.id +" updated")});
   }
+}
+
+function upd() {
+  ajaxGet(document, 'GET', '', "http://www.flash-kir.ru/api/style/").then((resp)=> {
+    for (let i = 0; i < resp.length; i++) {
+      let el = document.getElementById(resp[i].id);
+      if (el) {
+        el.style[resp[i].name] = resp[i].value;
+        console.log("changed style");
+      }
+    }
+  });
 }
 
 function ready() {
@@ -132,7 +145,8 @@ function ready() {
     for (let i = 0; i < resp.length; i++) {
       sh.appendChild( addBlk(0, resp[i]) )
     }
-    console.log("all blocks created")
+    console.log("all blocks created");
+    setInterval(upd, 300)
   });
 }
 
