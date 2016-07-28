@@ -48,4 +48,4 @@ class Style(models.Model):
     value = models.CharField(max_length=256, null=True, blank=True)
 
     def to_json(self):
-        return {"id": self.id, "name": self.name, "value": self.value}
+        return {"id": self.obj_id, "name": self.name, "value": self.value}
