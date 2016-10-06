@@ -8,7 +8,7 @@ function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function ajaxGet(el, method='GET', pk="", url="http://127.0.0.1:8000/api/shape/") {
+function ajaxGet(el, method='GET', pk="", url="http://www.flash-kir.ru/api/shape/") {
   return new Promise( function (resolve, reject) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url+pk, true);
@@ -129,7 +129,7 @@ function mMove(e) {
 }
 
 function upd() {
-  ajaxGet(document, 'GET', '', "http://127.0.0.1:8000/api/style/").then((resp)=> {
+  ajaxGet(document, 'GET', '', "http://www.flash-kir.ru/api/style/").then((resp)=> {
     for (let i = 0; i < resp.length; i++) {
       let el = document.getElementById(resp[i].id);
       if (el) {
