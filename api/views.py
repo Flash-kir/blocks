@@ -2,6 +2,7 @@
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 # from django.contrib.sites.models import Site
+from django.utils import timezone
 import json, datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.http import QueryDict
@@ -25,7 +26,7 @@ class HomePageView(TemplateView):
 @csrf_exempt
 def api_style_get(request):
     if request.method == 'GET':
-        return JsonResponse([x.to_json() for x in Style.objects.all()], safe=False)
+        return JsonResponse([x.to_json() for x in Style.objects.filter(modify__gte=timezone.now()-timezone.timedelta(300))], safe=False)
 
 
 @csrf_exempt

@@ -17,12 +17,14 @@ class Shape(models.Model):
         stl = Style.objects.filter(obj=self.id, name=name).first()
         if stl:
             stl.value = value
+            stl.modify = timezone.now()
             stl.save()
         else:
             stl = Style()
             stl.obj = self
             stl.name = name
             stl.value = value
+            stl.modify = timezone.now()
             stl.save()
 
     def set_styles(self, style_str):
@@ -31,7 +33,6 @@ class Shape(models.Model):
 
     def to_json(self):
         return {"id": self.id, "class": self.cls, "type": self.type, "style": self.get_style()}
-
 
     def from_json(self, data):
         if "class" in data.keys():
@@ -46,6 +47,7 @@ class Style(models.Model):
     obj = models.ForeignKey(Shape)
     name = models.CharField(max_length=64, null=True, blank=True)
     value = models.CharField(max_length=256, null=True, blank=True)
+    modify = models.DateTimeField(default=timezone.now(), null=True, blank=True)
 
     def to_json(self):
         return {"id": self.obj_id, "name": self.name, "value": self.value}
